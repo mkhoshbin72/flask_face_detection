@@ -1,22 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Video Player</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/videoplayer.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8  offset-lg-2">
-                <h3>Live Streaming</h3>
-                <img src="{{url_for('video_feed')}}" width="100%" alt="">
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <table class="center">
+        <tr>
+            <td>
+                <div class="player-center">
+
+                    <div class="player blue" tabindex="1">
+                        <div class="ambient">
+                            <div class="light light-1 active"></div>
+                            <div class="light light-2"></div>
+                            <div class="light mask"></div>
+                        </div>
+                        <div class="content">                            
+                            <div class="video-wrapper">
+                                <img src="{{url_for('video_feed')}}" width="100%" alt="">
+                                <canvas class="loading-preview"></canvas>
+                            </div>
+                            <div class="indicators">
+                                <div class="indicator indicator-error">
+                                    <div class="icon"></div>
+                                    <div class="label">!</div>
+                                </div>
+                                <div class="indicator indicator-loading">
+                                    <div class="icon"></div>
+                                </div>
+                                <div class="indicator indicator-play">
+                                    <div class="icon"></div>
+                                </div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-shadow"></div>
+                                <div class="seeking-preview">
+                                    <div class="video-source"></div>
+                                    <div class="thumbnails"></div>
+                                    <div class="frame-preview">
+                                        <canvas class="frame-canvas"></canvas>
+                                        <div class="frame-label">
+                                            <span class="center-label">0:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="share-link">
+                                    <input type="text" class="link" readonly="readonly">
+                                </div>
+                                <div class="wrapper">
+                                    <div class="inner">
+                                        <a href="#" class="progress-bar">
+                                            <div class="inner">
+                                                <div class="progress progress-loaded"></div>
+                                                <div class="progress progress-viewed color"></div>
+                                            </div>
+                                            <div class="bubble-bar">
+                                                <div class="bubble"></div>
+                                            </div>
+                                        </a>
+                                        <div class="controls">
+                                            <div class="buttons buttons-left">
+                                                <a href="#" class="button play-state">
+                                                    <div class="play"></div>
+                                                    <div class="pause">
+                                                        <div class="bar bar-1"></div>
+                                                        <div class="bar bar-2"></div>
+                                                    </div>
+                                                </a>
+                                                <div class="volume">
+                                                    <a href="#" class="button volume-toggle">
+                                                        <div class="icon">                                                        
+                                                            <div class="square"></div>
+                                                            <div class="triangle"></div>
+                                                            <div class="sound-min"></div>
+                                                            <div class="sound-max"></div>
+                                                            <div class="sound-muted">x</div>
+                                                        </div>
+                                                    </a>
+                                                    <div class="button volume-slider">
+                                                        <a href="#" class="bar-slider">
+                                                            <div class="bar bar-off"></div>
+                                                            <div class="bar bar-on color"></div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="timer">
+                                                    <span class="current">0:00</span> / <span class="max">0:00</span>
+                                                </div>
+                                            </div>
+                                            <div class="buttons buttons-right">
+                                                <a href="#" class="button share">
+                                                    <div class="triangle"></div>
+                                                    <div class="icon">
+                                                        <div class="circle circle-1"></div>
+                                                        <div class="circle circle-2"></div>
+                                                        <div class="circle circle-3"></div>
+                                                        <div class="bar bar-1"></div>
+                                                        <div class="bar bar-2"></div>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="button hd">
+                                                    <span class="text text-top">HD</span>
+                                                    <span class="text text-bottom">SD</span>
+                                                </a>
+                                                <a href="#" class="button fullscreen">
+                                                    <div class="icon"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script type="text/javascript" src="{{url_for('static', filename='js/videoplayer.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
 </html>
