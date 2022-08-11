@@ -18,12 +18,15 @@ cap = cv2.VideoCapture(0)
 def get_frame():
 
     frame_counter = 0
-    model = load_model('/home/mkh/Files/yolov7_my/head_re.pt')
+    weight = ''
+    device = 'cpu'
+    model = load_model(weight=weight, device=device)
 
     while True:
         ret, frame = cap.read()
 
         frame_counter += 1
+        # if you run the code on video and want to replay video after it finished uncomment the code bellow
         # if frame_counter == cap.get(cv2.CAP_PROP_FRAME_COUNT):
         #     frame_counter = 0
         #     cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
